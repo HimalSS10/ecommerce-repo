@@ -1,0 +1,32 @@
+[
+  {
+    "product": "Wireless Mouse",
+    "price": 259,
+    "quantity": 2,
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "product": "Bluetooth Headphones",
+    "price": 599,
+    "quantity": 1,
+    "image": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "product": "Mechanical Keyboard",
+    "price": 899,
+    "quantity": 1,
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "product": "USB-C Hub",
+    "price": 349,
+    "quantity": 3,
+    "image": "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "product": "Webcam",
+    "price": 499,
+    "quantity": 1,
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=200&q=80"
+  }
+]
