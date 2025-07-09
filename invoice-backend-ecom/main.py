@@ -12,6 +12,16 @@ load_dotenv()
 
 app = FastAPI()
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",   # 👈 makes app accessible externally
+        port=8004,        # 👈 change to your desired port
+        reload=True       # 👈 optional: for dev hot-reload
+    )
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Or specify your frontend URL, e.g. ["http://localhost:3000"]

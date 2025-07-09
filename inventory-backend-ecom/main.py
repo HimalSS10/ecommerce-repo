@@ -11,6 +11,15 @@ load_dotenv()
 
 app = FastAPI()
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",   # 👈 makes app accessible externally
+        port=8003,        # 👈 change to your desired port
+        reload=True       # 👈 optional: for dev hot-reload
+    )
+
 payment_service_url = os.getenv("payment-service-url")
 
 DATABASE_URL = "mysql+pymysql://himal:himal-pwd@35.184.157.35:3306/orders"
