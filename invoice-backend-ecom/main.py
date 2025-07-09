@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Body, HTTPException
 import requests
 from pydantic import BaseModel
@@ -5,6 +6,9 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -16,7 +20,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DATABASE_URL = "mysql+pymysql://himal:himal-pwd@35.184.157.35:3306/orders"
+user_service_url = os.getenv("user-service-url")
+
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/orders"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
@@ -51,7 +57,7 @@ def generate_invoice():
 def test_flow():
     # Call users service
     try:
-        resp = requests.get("http://localhost:8001/users/info/1")
+        resp = requests.get(f"{user_service_url}/users/info/1")
         user = resp.json()
     except Exception as e:
         user = {"error": str(e)}
@@ -66,7 +72,7 @@ def get_invoices():
         for invoice in invoices:
             user_name = None
             try:
-                user_resp = requests.get(f"http://localhost:8001/users/info/{invoice.user_id}")
+                user_resp = requests.get(f"{user_service_url}/users/info/{invoice.user_id}")
                 if user_resp.status_code == 200:
                     user_data = user_resp.json()
                     user_name = user_data.get("name")

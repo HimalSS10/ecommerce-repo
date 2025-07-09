@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Body
 from sqlalchemy import Column, Integer, Float, String, ForeignKey
 from sqlalchemy.orm import relationship
@@ -6,6 +7,9 @@ from pydantic import BaseModel
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -17,7 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DATABASE_URL = "mysql+pymysql://himal:himal-pwd@35.184.157.35:3306/orders"
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/orders"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

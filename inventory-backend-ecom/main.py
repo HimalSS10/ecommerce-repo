@@ -1,13 +1,19 @@
+import os
 from fastapi import FastAPI
 import requests
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
-DATABASE_URL = "mysql+pymysql://himal:himal-pwd@35.184.157.35:3306/orders"
+payment_service_url = os.getenv("payment-service-url")
+
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/orders"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
@@ -36,7 +42,7 @@ def check_inventory():
 def test_flow():
     # Call payment service
     try:
-        resp = requests.get("http://localhost:8001/pay")
+        resp = requests.get(f"{payment_service_url}/pay")
         payment = resp.json()
     except Exception as e:
         payment = {"error": str(e)}
