@@ -5,6 +5,7 @@ import com.example.ecommerce.OrderRepo.OrderRepo;
 import com.example.ecommerce.OrderService.orderService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,6 +22,10 @@ import java.net.http.HttpResponse;
 @RequestMapping("/orders")
 @CrossOrigin(origins = "*")
 public class OrderController {
+
+    @Value("${payment.url}")
+    private String paymentBaseUrl;
+
     @Autowired
     private OrderRepo repo;
 
@@ -54,7 +59,7 @@ public class OrderController {
 
             // Build the HTTP request
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8002/payment/add"))
+                    .uri(URI.create(paymentBaseUrl + "/payment/add"))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                     .build();

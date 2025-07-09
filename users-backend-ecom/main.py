@@ -17,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/orders"
+DATABASE_URL = "mysql+pymysql://himal:himal-pwd@35.184.157.35:3306/orders"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
