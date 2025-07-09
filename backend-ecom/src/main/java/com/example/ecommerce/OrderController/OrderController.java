@@ -44,6 +44,9 @@ public class OrderController {
 
     @PostMapping
     public Order createOrder(@RequestBody Order order) {
+        String endpoint = "/payment/add";
+        String fullUrl = paymentBaseUrl + endpoint;
+
         System.out.println("order" + order.getProduct());
         Order savedOrder = orderService.createOrder(order);
 
@@ -59,7 +62,7 @@ public class OrderController {
 
             // Build the HTTP request
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(paymentBaseUrl + "/payment/add"))
+                    .uri(URI.create(fullUrl))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                     .build();
