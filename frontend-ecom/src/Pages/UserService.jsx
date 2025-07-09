@@ -15,7 +15,7 @@ export default function UserService() {
   const [newEmail, setNewEmail] = useState("");
   const [password, setNewPassword] = useState("");
 
-  const API_GATEWAY_URL = import.meta.env.VITE_GATEWAY_URL;
+  const API_GATEWAY_URL = "https://ecomservice.squareshift.dev";
 
   console.log(API_GATEWAY_URL,"API_GATEWAY_URL");
   

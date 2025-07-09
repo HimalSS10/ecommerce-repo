@@ -13,7 +13,7 @@ export default function PaymentService() {
   const [payments, setPayments] = useState([]);
   const navigate = useNavigate();
 
-  const API_GATEWAY_URL = import.meta.env.VITE_GATEWAY_URL;
+  const API_GATEWAY_URL = "https://ecomservice.squareshift.dev";
 
   console.log("payments", payments);
 

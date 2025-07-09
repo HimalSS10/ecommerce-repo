@@ -10,7 +10,7 @@ export default function OrderForm() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [customerName, setCustomerName] = useState("");
 
-  const API_GATEWAY_URL = import.meta.env.VITE_GATEWAY_URL;
+  const API_GATEWAY_URL = "https://ecomservice.squareshift.dev";
 
   useEffect(() => {
     fetchOrders();
