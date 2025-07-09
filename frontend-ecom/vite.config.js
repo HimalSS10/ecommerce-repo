@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    "allowedHosts": ["https://ecomtest.squareshift.dev/"],
-    "host": "0.0.0.0/0",
+    "allowedHosts": ["ecomtest.squareshift.dev"],
+    "host": true,
     "port": 5173
   },
   plugins: [react()],
