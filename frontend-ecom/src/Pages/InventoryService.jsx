@@ -11,7 +11,7 @@ export default function InventoryService() {
   ];
   const [items, setItems] = useState(items1);
   
-  const API_GATEWAY_URL = import.meta.env.GATEWAY_URL;
+  const API_GATEWAY_URL = import.meta.env.VITE_GATEWAY_URL;
 
   useEffect(() => {
     axios.get(`${API_GATEWAY_URL}/orders`).then((res) => setItems(res.data));

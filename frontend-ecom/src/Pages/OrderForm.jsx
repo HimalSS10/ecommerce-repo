@@ -10,7 +10,7 @@ export default function OrderForm() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [customerName, setCustomerName] = useState("");
 
-  const API_GATEWAY_URL = import.meta.env.GATEWAY_URL;
+  const API_GATEWAY_URL = import.meta.env.VITE_GATEWAY_URL;
 
   useEffect(() => {
     fetchOrders();
