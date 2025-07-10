@@ -16,7 +16,7 @@ if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",   # 👈 makes app accessible externally
+        host="10.128.0.47",   # 👈 makes app accessible externally
         port=8001,        # 👈 change to your desired port
         reload=True       # 👈 optional: for dev hot-reload
     )
